@@ -1,0 +1,29 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [options, setOptions] = useState([
+    { name: 'Option 1', votes: 0 },
+    { name: 'Option 2', votes: 0 },
+    { name: 'Option 3', votes: 0 }
+  ]);
+
+  const handleVote = (index) => {
+    const newOptions = [...options];
+    newOptions[index].votes += 1;
+    setOptions(newOptions);
+  };
+
+  return (
+    <div>
+      <h1>Voting Application</h1>
+      {options.map((option, index) => (
+        <div key={index}>
+          <p>{option.name}: {option.votes} votes</p>
+          <button onClick={() => handleVote(index)}>Vote</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default App;
